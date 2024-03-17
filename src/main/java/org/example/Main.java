@@ -1,7 +1,6 @@
 package org.example;
 
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
+    Archer archer = new Archer(1, "vas", 100, )
     }
 }

@@ -7,21 +7,23 @@ public abstract class GameCharacter {
     protected int id;
     protected String name;
     protected double health;
-    protected double power;
+    protected int power;
     protected String weapon;
     protected int protection;
+    protected int level;
 
     static {
         GameCharacter.ran = new Random();
     }
 
-    public GameCharacter(int id, String name,double health, double power, String weapon, int protection) {
+    public GameCharacter(int id, String name,double health, int power, String weapon, int protection, int level) {
         this.id = id;
         this.name = name;
         this.health = health;
         this.power = power;
         this.weapon = weapon;
         this.protection = protection;
+        this.level = level;
     }
 
     protected void stats() {
@@ -39,7 +41,8 @@ public abstract class GameCharacter {
     }
 
     protected void attack(GameCharacter target) {
-       int damage = GameCharacter.ran.nextInt(1, 5);
+        double damage = GameCharacter.ran.nextInt(1, 5)*power+level*0.2;
+        target.getDamage(damage);
     }
 
     protected void death() {
@@ -48,5 +51,9 @@ public abstract class GameCharacter {
 
     public double getHealth() {
         return health;
+    }
+
+    public String getName() {
+        return name;
     }
 }
